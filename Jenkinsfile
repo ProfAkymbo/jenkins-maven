@@ -11,7 +11,7 @@ pipeline {
         }
         stage('PMD code-review') {
             steps {
-                sh '/opt/maven/bin/mvn -P metrics pmd:pmd  '
+                sh '${mvnHome}/maven/bin/mvn -P metrics pmd:pmd  '
             }
             post {
                 success{
@@ -36,7 +36,7 @@ pipeline {
         
         stage('package app') {
             steps {
-                sh '/opt/maven/bin/mvn package'
+                sh '${mvnHome}/maven/bin/mvn package'
             }
         }
         stage('publish app to jfrog') {
