@@ -1,7 +1,7 @@
 pipeline {
     agent any
     tools {
-        maven 'maven3' // This matches the name you gave in Tools
+        maven 'Maven3' // This matches the name you gave in Tools
     }
     stages {
         stage('compile code') {
