@@ -16,11 +16,11 @@ pipeline {
             steps {
                 sh 'mvn -P metrics pmd:pmd'
             }
-            post {
-                success {
-                    recordIssues(tools: [pmdParser(pattern: '**/pmd.xml')])
-                }
-            }
+            // post {
+            //     success {
+            //         recordIssues(tools: [pmdParser(pattern: '**/pmd.xml')])
+            //     }
+            // }
         }
 
         stage('Sonar Code Analysis') {
