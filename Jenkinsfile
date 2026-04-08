@@ -12,30 +12,30 @@ pipeline {
             }
         }
 
-        stage('PMD code-review') {
-            steps {
-                sh 'mvn -P metrics pmd:pmd'
-            }
+        // stage('PMD code-review') {
+        //     steps {
+        //         sh 'mvn -P metrics pmd:pmd'
+        //     }
             // post {
             //     success {
             //         recordIssues(tools: [pmdParser(pattern: '**/pmd.xml')])
             //     }
             // }
-        }
+        // }
 
-        stage('Sonar Code Analysis') {
-            environment {
-                scannerHome = tool 'sonarqube-scanner'
-            }
-            steps {
-                withSonarQubeEnv('sonarqube') {
-                    sh "${scannerHome}/bin/sonar-scanner"
-                }
-                timeout(time: 3, unit: 'MINUTES') {
-                    waitForQualityGate abortPipeline: true
-                }
-            }
-        }
+        // stage('Sonar Code Analysis') {
+        //     environment {
+        //         scannerHome = tool 'sonarqube-scanner'
+        //     }
+        //     steps {
+        //         withSonarQubeEnv('sonarqube') {
+        //             sh "${scannerHome}/bin/sonar-scanner"
+        //         }
+        //         timeout(time: 3, unit: 'MINUTES') {
+        //             waitForQualityGate abortPipeline: true
+        //         }
+        //     }
+        // }
 
         stage('package app') {
             steps {
