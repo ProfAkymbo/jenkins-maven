@@ -43,33 +43,33 @@ pipeline {
             }
         }
 
-        stage('publish app to jfrog') {
-            steps {
-                rtUpload (
-                    serverId: 'jfrog-dev',
-                    spec: '''{
-                        "files": [
-                            {
-                                "pattern": "target/kitchensink.war",
-                                "target": "non-prod-repo/"
-                            }
-                        ]
-                    }'''
-                )
-            }
-        }
+        // stage('publish app to jfrog') {
+        //     steps {
+        //         rtUpload (
+        //             serverId: 'jfrog-dev',
+        //             spec: '''{
+        //                 "files": [
+        //                     {
+        //                         "pattern": "target/kitchensink.war",
+        //                         "target": "non-prod-repo/"
+        //                     }
+        //                 ]
+        //             }'''
+        //         )
+        //     }
+        // }
 
-        stage('Ansible Deploy to httpd') {
-            steps {
-                ansiblePlaybook(
-                    credentialsId: 'ansible-token',
-                    disableHostKeyChecking: true,
-                    installation: 'ansible',
-                    inventory: 'inventory',
-                    playbook: 'playbook.yml'
-                )
-            }
-        }
+        // stage('Ansible Deploy to httpd') {
+        //     steps {
+        //         ansiblePlaybook(
+        //             credentialsId: 'ansible-token',
+        //             disableHostKeyChecking: true,
+        //             installation: 'ansible',
+        //             inventory: 'inventory',
+        //             playbook: 'playbook.yml'
+        //         )
+        //     }
+        // }
 
         stage('Docker Build & Run') {
             steps {
