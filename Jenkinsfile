@@ -71,14 +71,14 @@ pipeline {
         //     }
         // }
 
-        stage('Docker Build & Run') {
-            steps {
-                sh '''
-                docker ps | grep catalina | awk '{print $1}' | xargs -r docker stop || true
-                docker build -t bloomy/myapp:1.0.${BUILD_NUMBER} .
-                docker run -d -p 8050:8050 --name myapp-1.0.${BUILD_NUMBER} bloomy/myapp:1.0.${BUILD_NUMBER}
-                '''
-            }
-        }
+        // stage('Docker Build & Run') {
+        //     steps {
+        //         sh '''
+        //         docker ps | grep catalina | awk '{print $1}' | xargs -r docker stop || true
+        //         docker build -t bloomy/myapp:1.0.${BUILD_NUMBER} .
+        //         docker run -d -p 8050:8050 --name myapp-1.0.${BUILD_NUMBER} bloomy/myapp:1.0.${BUILD_NUMBER}
+        //         '''
+        //     }
+        // }
     }
 }
